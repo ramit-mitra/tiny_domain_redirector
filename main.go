@@ -29,8 +29,8 @@ func main() {
 	port := flag.Int("port", 9990, "Port to listen on")
 	flag.Parse()
 
-	log.Println("--- Starting redirector")
-	log.Println("--- Running on port: " + fmt.Sprint(*port))
+	log.Println("--- 🚀 Starting redirector ")
+	log.Println("--- 👾 Running on port: " + fmt.Sprint(*port))
 
 	// default handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
