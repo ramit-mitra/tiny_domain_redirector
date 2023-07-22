@@ -6,13 +6,16 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 )
 
-const redirectFrom = "contact.ramit.io"
-const redirectTo = "https://ramit.io/contact"
-
 func main() {
+	// define redirection map to store redirection details
+	redirectionMap := map[string]string{
+		"contact.ramit.io": "https://ramit.io/contact",
+		"test.ramit.io":    "https://example.com/test",
+		"demo.ramit.io":    "https://example.com/demo",
+	}
+
 	// create a file to store the logs
 	file, err := os.Create("app.log")
 	if err != nil {
@@ -36,12 +39,11 @@ func main() {
 		w.Header().Set("service", "ramit/tiny_domain_redirector")
 		w.Header().Set("project-url", "https://github.com/ramit-mitra/tiny_domain_redirector")
 
-		if strings.Contains(r.Host, redirectFrom) {
-			log.Println("✅ Redirecting to " + fmt.Sprint(redirectTo))
-			http.Redirect(w, r, redirectTo, http.StatusFound)
+		if target, ok := redirectionMap[r.Host]; ok {
+			log.Printf("✅ Redirecting from %s to %s\n", fmt.Sprint(r.Host), fmt.Sprint(target))
+			http.Redirect(w, r, target, http.StatusFound)
 		} else {
-			log.Println("❌ Not redirecting, request from host: " + fmt.Sprint(r.Host))
-
+			log.Printf("❌ Not redirecting, request from host: %s\n", fmt.Sprint(r.Host))
 			// return a HTTP status code of 404
 			w.WriteHeader(http.StatusNotFound)
 		}
