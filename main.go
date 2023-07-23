@@ -35,7 +35,7 @@ func main() {
 	// default handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// let's set some headers
-		w.Header().Set("cache-control", "public, max-age=3600")
+		w.Header().Set("cache-control", "private, no-cache")
 		w.Header().Set("service", "ramit/tiny_domain_redirector")
 		w.Header().Set("project-url", "https://github.com/ramit-mitra/tiny_domain_redirector")
 

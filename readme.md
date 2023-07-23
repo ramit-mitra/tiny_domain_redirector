@@ -7,6 +7,7 @@ Built as a personal project. Please review the code before using. Suggestions an
 
 Thank you
 
+
 ## Run as a service
 
 - Create a `Systemd` service. Example below:
@@ -63,8 +64,15 @@ server {
 
 ## Test in local 
 
-- Run the app
+- Modify the code, and run the app (I prefer using [air](https://github.com/cosmtrek/air))
 - Use curl to verify if the redirect works. Example: `curl -skIXGET --connect-to ::localhost:9990 contact.ramit.io` 
+
+## Build and deploy
+
+- Use the `build.sh` script to generate a `binary executable`. 
+- Deploy the generated binary to your server (build a fancy pipeline or use `rsync`). 
+- Note: I have used [gum](https://github.com/charmbracelet/gum) to print cool messages; if you do not have gum installed, you will get errors. Please make modifications to the `build.sh` script as required. 
+- Once deployed, please reload the `redirector` service (`sudo systemctl restart redirector.service`)
 
 ## Motivation
 
