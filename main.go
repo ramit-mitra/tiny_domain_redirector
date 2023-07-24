@@ -12,8 +12,10 @@ func main() {
 	// define redirection map to store redirection details
 	redirectionMap := map[string]string{
 		"contact.ramit.io": "https://ramit.io/contact",
-		"test.ramit.io":    "https://example.com/test",
-		"demo.ramit.io":    "https://example.com/demo",
+		"ramitmitra.com":   "https://ramit.io",
+		"ramit.org":        "https://ramit.io",
+		"ramit.dev":        "https://ramit.io",
+		"ramit.app":        "https://ramit.io",
 	}
 
 	// create a file to store the logs
