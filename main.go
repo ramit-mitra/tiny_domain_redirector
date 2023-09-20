@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+const Version = "1.1.0"
+
 func main() {
 	// define redirection map to store redirection details
 	redirectionMap := map[string]string{
@@ -31,7 +33,7 @@ func main() {
 	port := flag.Int("port", 9990, "Port to listen on")
 	flag.Parse()
 
-	log.Println("--- 🚀 Starting redirector ")
+	log.Println("--- 🚀 Starting redirector (version: " + fmt.Sprint(Version) + ")")
 	log.Println("--- 👾 Running on port: " + fmt.Sprint(*port))
 
 	// default handler
