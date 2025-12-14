@@ -1,0 +1,6 @@
+tmp/*
+testdata/*
+build/*
+app.log
+metrics.log
+redirects.yaml

@@ -1,0 +1,26 @@
+# Configuration file for tiny_domain_redirector
+# This file defines a list of redirection rules.
+# Each rule specifies a source host, a destination URL, and the HTTP status code to use for the redirect.
+
+redirects:
+  - source: "example.com"
+    destination: "https://destination-a.com"
+    # Optional: Defaults to 302 if not specified.
+    # 301: Moved Permanently - Use for permanent redirects. SEO-friendly.
+    # 302: Found - Use for temporary redirects.
+    # 307: Temporary Redirect - Similar to 302, but guarantees the method and body are not changed.
+    # 308: Permanent Redirect - The permanent version of 307.
+    status_code: 301
+
+  - source: "www.example.com"
+    destination: "https://destination-a.com"
+    status_code: 301
+
+  - source: "another-domain.org"
+    destination: "https://destination-b.net/some/path"
+    status_code: 302 # This is a temporary redirect.
+
+  - source: "old-docs.example.dev"
+    destination: "https://new-docs.example.dev"
+    # If status_code is omitted, your application can default to 302 (Found).
+    # status_code: 302
